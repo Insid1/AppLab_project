@@ -1,0 +1,521 @@
+<!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываем язык содержимого -->
+<html lang="ru">
+<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
+
+<head>
+    <!-- Заголовок страницы в браузере -->
+    <title>CSS. Часть №6 (псевдоклассы)</title>
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Кодировка страницы -->
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <!-- Настройка ViewPort (под адаптив) -->
+    <meta name="viewport" content="width=device-width">
+</head>
+<!-- Отображаемое тело страницы -->
+
+<body class="">
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__logo logo">
+                    <span>App</span>
+                    <span>Lab</span>
+                </div>
+                <nav class="header__navbar navbar">
+                    <ul>
+                        <li><a data-goto="top" class="header__link">home</a></li>
+                        <li><a data-goto="apps-features" class="header__link">key features</a></li>
+                        <li><a data-goto="pricing" class="header__link">pricing</a></li>
+                        <li><a data-goto="team" class="header__link">testiminial</a></li>
+                        <li><a data-goto="asked-questions" class="header__link">FAQ</a></li>
+                        <li><a class="comercial">Try for Free</a></li>
+                    </ul>
+                </nav>
+                <button class="header__burger-button burger-button"><span
+                        class="burger-button__middle-line"></span></button>
+            </div>
+        </header>
+        <div class="main">
+            <div class="top">
+                <div class="top__container">
+                    <div class="top__left">
+                        <div class="top__achievement">#1 Editors Choice App of 2020</div>
+                        <div class="top__title">Best App for your moders lifestyle</div>
+                        <div class="top__subtitle">Increase productivity with a simple to-do app. app for managing your
+                            personal budgets.</div>
+                        <div class="top__info">
+                            <a href="" class="comercial">tru for free</a>
+                            <a href="" class="link">watch the video</a>
+                        </div>
+                    </div>
+                    <div class="top__right">
+                        <img src="./img/phone_greetings.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="companies">
+                <div class="companies__container">
+                    <div class="companies__title"><span>Trusted by companies like</span></div>
+                    <ul class="companies__list">
+                        <li class="companies__company"><img src="./img/logo_Srathmed.png" alt=""></li>
+                        <li class="companies__company"><img src="./img/logo_ANUBIS.png" alt=""></li>
+                        <li class="companies__company"><img src="./img/logo_ALONZO.png" alt=""></li>
+                        <li class="companies__company"><img src="./img/logo_EXPRESS.png" alt=""></li>
+                        <li class="companies__company"><img src="./img/logo_maniac.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="apps-features">
+                <div class="apps-features__container">
+                    <div class="apps-features__left">
+                        <img src="./img/phone_search.png" alt="">
+                    </div>
+                    <div class="apps-features__right">
+                        <div class="apps-features__title">Awesome apps features</div>
+                        <div class="apps-features__subtitle">Increase productivity with a simple to-do app. app for
+                            managing
+                            your personal budgets.</div>
+                        <div class="apps-features__features-column">
+                            <div class="feature">
+                                <div class="feature__image"><img src="./img/icons/icon_fastPerfomance.png" alt=""></div>
+                                <div class="feature__info">
+                                    <div class="feature__title red">Fast perfomance</div>
+                                    <div class="feature__subtitle">Get your blood tests delivered at
+                                        home collect a sample from the
+                                        news your blood tests.</div>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature__image"><img src="./img/icons/icon_prototyping.png" alt=""></div>
+                                <div class="feature__info">
+                                    <div class="feature__title blue">Prototyping</div>
+                                    <div class="feature__subtitle">Get your blood tests delivered at home collect a
+                                        sample from the news your blood tests.</div>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature__image"><img src="./img/icons/icon_editVector.png" alt=""></div>
+                                <div class="feature__info">
+                                    <div class="feature__title green">Vector Editing</div>
+                                    <div class="feature__subtitle">Get your blood tests delivered at home collect a
+                                        sample
+                                        from the news your blood tests.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="jackpots">
+                <div class="jackpots__container">
+                    <div class="jackpots__top">
+                        <div class="jackpots__left"><span>Smart jackpots that you may love this anytime &
+                                anywhere</span>
+                        </div>
+                        <div class="jackpots__right">
+                            <span>
+                                The rise of mobile devices transforms the way we
+                                consume information entirely and the world's most
+                                elevant channels such as Facebook.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="jackpots__bottom">
+                        <div class="jackpots__features-row">
+                            <div class="jackpots__feature feature">
+                                <div class="feature__image jackpots__image"><img src="./img/icons/icon_autoPay.png"
+                                        alt=""></div>
+                                <div class="feature__info">
+                                    <div class="feature__title red">Automatic Payouts</div>
+                                    <div class="feature__subtitle">Get your blood tests delivered at
+                                        home collect a sample from the
+                                        news your blood tests.</div>
+                                </div>
+                            </div>
+                            <div class="jackpots__feature feature">
+                                <div class="feature__image jackpots__image"><img src="./img/icons/icon_Network.png"
+                                        alt=""></div>
+                                <div class="feature__info">
+                                    <div class="feature__title blue">Network Effect</div>
+                                    <div class="feature__subtitle">Get your blood tests delivered at
+                                        home collect a sample from the
+                                        news your blood tests.</div>
+                                </div>
+                            </div>
+                            <div class="jackpots__feature feature">
+                                <div class="feature__image jackpots__image"><img src="./img/icons/icon_ThumbUp.png"
+                                        alt=""></div>
+                                <div class="feature__info">
+                                    <div class="feature__title green">Bigger Rewards Method</div>
+                                    <div class="feature__subtitle">Get your blood tests delivered at
+                                        home collect a sample from the
+                                        news your blood tests.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="designed-build">
+                <div class="designed-build__container">
+                    <div class="designed-build__left"><img src="./img/main_socials.png" alt=""></div>
+                    <div class="designed-build__right">
+                        <div class="designed-build__title">Designed & built by
+                            the latest code
+                            integration</div>
+                        <div class="designed-build__subtitle">The rise of mobile devices transforms the way we
+                            consume information entirely and the world's most
+                            elevant channels such as Facebook.</div>
+                        <a href="" class="comercial">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="choose-app">
+                <div class="choose-app__container">
+                    <div class="choose-app__title">Why you should choose
+                        our app</div>
+                    <div class="choose-app__subtitle">The rise of mobile devices transforms the way we consume
+                        information entirely
+                        and the world's most elevant channels such as Facebook.</div>
+                    <div class="choose-app-row-apps">
+                        <div class="apps__app app">
+                            <div class="app__image"><img src="./img/icons/icon_appDev.png" alt=""></div>
+                            <div class="app__title">App Development</div>
+                            <div class="app__subtitle">Get your blood tests delivered at
+                                home collect a sample from the
+                                news your blood tests.</div>
+                        </div>
+                        <div class="apps__app app">
+                            <div class="app__image"><img src="./img/icons/icon_award.png" alt=""></div>
+                            <div class="app__title">10 Times Award</div>
+                            <div class="app__subtitle">Get your blood tests delivered at
+                                home collect a sample from the
+                                news your blood tests.</div>
+                        </div>
+                        <div class="apps__app app">
+                            <div class="app__image"><img src="./img/icons/icon_cloudStorage.png" alt=""></div>
+                            <div class="app__title">Cloud Storage</div>
+                            <div class="app__subtitle">Get your blood tests delivered at
+                                home collect a sample from the
+                                news your blood tests.</div>
+                        </div>
+                    </div>
+                    <div class="choose-app-row-apps">
+                        <div class="apps__app app">
+                            <div class="app__image"><img src="./img/icons/icon_customization.png" alt=""></div>
+                            <div class="app__title">Customization</div>
+                            <div class="app__subtitle">Get your blood tests delivered at
+                                home collect a sample from the
+                                news your blood tests.</div>
+                        </div>
+                        <div class="apps__app app">
+                            <div class="app__image"><img src="./img/icons/icon_UXPlaning.png" alt=""></div>
+                            <div class="app__title">UX Planning</div>
+                            <div class="app__subtitle">Get your blood tests delivered at
+                                home collect a sample from the
+                                news your blood tests.</div>
+                        </div>
+                        <div class="apps__app app">
+                            <div class="app__image"><img src="./img/icons/icon_customerService.png" alt=""></div>
+                            <div class="app__title">Customer Support</div>
+                            <div class="app__subtitle">Get your blood tests delivered at
+                                home collect a sample from the
+                                news your blood tests.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing">
+                <div class="pricing__container">
+                    <div class="pricing__title">Get awesome features, without
+                        extra charges</div>
+                    <div class="pricing__subtitle">The rise of mobile devices transforms the way we consume information
+                        entirely
+                        and the world's most elevant channels such as Facebook.</div>
+                    <button class="toggle-button">
+                        <div class="toggle-button__lighter"></div>
+                        <span class="toggle-button selected">Monthly</span>
+                        <span class="toggle-button">Annually</span>
+                    </button>
+                    <div class="pricing__bottom">
+                        <div class="price-list free active">
+                            <div class="price-list__header">
+                                <div class="price-list__price">
+                                    <span>$0</span>
+                                    <span>/month</span>
+                                </div>
+                                <div class="price-list__title">bussiness Class</div>
+                                <div class="price-list__subtitle">For small teams or office</div>
+                            </div>
+                            <ul class="price-list__options">
+                                <li>Drag & Drop Builder</li>
+                                <li>1,000's of Templates</li>
+                                <li>Blog Support Tools</li>
+                                <li>eCommerce Store</li>
+                            </ul>
+                            <a href="" class="price-list__button comercial">Start free trail</a>
+                        </div>
+                        <div class="price-list month active">
+                            <div class="price-list__header month">
+                                <div class="price-list__price">
+                                    <span>$99</span>
+                                    <span>/month</span>
+                                </div>
+                                <div class="price-list__title">Pro Master</div>
+                                <div class="price-list__subtitle month">For Best opportunities</div>
+                            </div>
+                            <ul class="price-list__options">
+                                <li class="inc">Drag & Drop Builder</li>
+                                <li class="inc">1,000's of Templates</li>
+                                <li class="inc">Blog Support Tools</li>
+                                <li>eCommerce Store</li>
+                            </ul>
+                            <a href="" class="price-list__button comercial">Subscribe Now</a>
+                        </div>
+                        <div class="price-list year">
+                            <div class="price-list__header year">
+                                <div class="price-list__price">
+                                    <span>$999</span>
+                                    <span>/year</span>
+                                </div>
+                                <div class="price-list__title">Pro Master</div>
+                                <div class="price-list__subtitle">For Best opportunities</div>
+                            </div>
+                            <ul class="price-list__options">
+                                <li class="inc">Drag & Drop Builder</li>
+                                <li class="inc">1,000's of Templates</li>
+                                <li class="inc">Blog Support Tools</li>
+                                <li class="inc">eCommerce Store</li>
+                            </ul>
+                            <a href="" class="comercial price-list__button year">Subscribe Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team">
+                <div class="team__container">
+                    <div class="team__left"><img src="./img/mapWithFaces.png" alt=""></div>
+                    <div class="team__right">
+                        <div class="team__title">Meet Client Satisfaction
+                            by using product</div>
+                        <div class="team__subtitle">The rise of mobile devices transforms the way we consume.
+                            elevant channels such as Facebook.</div>
+                        <div class="team__rating rating"></div>
+                        <div class="team__about">User friendly & Customizable</div>
+                        <div class="team__info">Bring to the table win-win survival strategies to ensure proactive
+                            domination. At the end of the day, going forward, a new normal that has evolved from
+                            generation X is on the runway heading towards a streamlined cloud solution. User generated
+                            content in real-time will have multiple touchpoints for offshoring.</div>
+                        <div class="banner">
+                            <div class="banner__wrapper">
+                                <ul class="banner__inner-container">
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="member">
+                                            <div class="member__image"><img src="./img/face_member.png" alt=""></div>
+                                            <div class="member__info">
+                                                <div class="member__title">Zoltan Nemeth</div>
+                                                <div class="member__position">CEO of Pixler Lab</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="banner-scrolling-buttons">
+                                <button class="banner-scrolling-buttons__left">←</button>
+                                <button class="banner-scrolling-buttons__right">→</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="asked-questions">
+                <div class="asked-questions__container">
+                    <div class="asked-questions__title">
+                        <span>
+                            Frequently asked questions
+                        </span>
+                    </div>
+                    <div class="asked-questions__subtitle">
+                        <span>
+                            The rise of mobile devices transforms the way we
+                            consume
+                            information entirely
+                            and the world's most elevant channels such as Facebook.
+                        </span>
+                    </div>
+                    <ul>
+                        <li class="asked-questions__panel">
+                            <div class="asked-questions__question ">
+                                <span>How to contact with riders emergency?</span>
+                                <button class="asked-questions__button"></button>
+                            </div>
+                            <div class="asked-questions__answer">Leverage agile frameworks to provide a robust
+                                synopsis for
+                                high level overviews. Iterative approaches to corporate strategy foster collaborative
+                                thinking to further the overall value proposition. Organically grow the holistic world
+                                view
+                                of disruptive innovation via workplace diversity and empowerment.
+                            </div>
+                        </li>
+                        <li class="asked-questions__panel">
+                            <div class="asked-questions__question"><span>App installation failed, how to update
+                                    systeminformation?</span>
+                                <button class="asked-questions__button"></button>
+                            </div>
+                            <div class="asked-questions__answer">Leverage agile frameworks to provide a robust synopsis
+                                for
+                                high level overviews. Iterative approaches to corporate strategy foster collaborative
+                                thinking to further the overall value proposition. Organically grow the holistic world
+                                view
+                                of disruptive innovation via workplace diversity and empowerment.
+                            </div>
+                        </li>
+                        <li class="asked-questions__panel">
+                            <div class="asked-questions__question"><span>Website reponse taking time, how to
+                                    improve?</span>
+                                <button class="asked-questions__button"></button>
+                            </div>
+                            <div class="asked-questions__answer">Leverage agile frameworks to provide a robust synopsis
+                                for
+                                high level overviews. Iterative approaches to corporate strategy foster collaborative
+                                thinking to further the overall value proposition. Organically grow the holistic world
+                                view
+                                of disruptive innovation via workplace diversity and empowerment.
+                            </div>
+                        </li>
+                        <li class="asked-questions__panel">
+                            <div class="asked-questions__question"><span>New update fixed all bug and issues</span>
+                                <button class="asked-questions__button"></button>
+                            </div>
+                            <div class="asked-questions__answer">Leverage agile frameworks to provide a robust synopsis
+                                for
+                                high level overviews. Iterative approaches to corporate strategy foster collaborative
+                                thinking to further the overall value proposition. Organically grow the holistic world
+                                view
+                                of disruptive innovation via workplace diversity and empowerment.
+                            </div>
+                        </li>
+                        <li class="asked-questions__panel">
+                            <div class="asked-questions__question"><span>How to contact with riders emergency?</span>
+                                <button class="asked-questions__button"></button>
+                            </div>
+                            <div class="asked-questions__answer">Leverage agile frameworks to provide a robust synopsis
+                                for
+                                high level overviews. Iterative approaches to corporate strategy foster collaborative
+                                thinking to further the overall value proposition. Organically grow the holistic world
+                                view
+                                of disruptive innovation via workplace diversity and empowerment.
+                            </div>
+                        </li>
+                </div>
+            </div>
+            <div class="download">
+                <div class="download__container">
+                    <div class="download__title"><span>Download our App now !</span></div>
+                    <div class="download__subtitle">The rise of mobile devices transforms the way we consume information
+                        entirely
+                        and the world's most elevant channels such as Facebook.</div>
+                    <div class="download__links">
+                        <a href="https://play.google.com/store"><img src="./img/Android_link.png" alt=""></a>
+                        <a href="https://www.apple.com/app-store/"><img src="./img/Apple_link.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer__logo logo"><span>App</span>
+                <span>Lab</span>
+            </div>
+            <nav class="footer__navbar navbar">
+                <ul class="navbar__links">
+                    <li><a data-goto="top">home</a></li>
+                    <li><a data-goto="apps-features">key features</a></li>
+                    <li><a data-goto="pricing">pricing</a></li>
+                    <li><a data-goto="team">testiminial</a></li>
+                    <li><a data-goto="asked-questions">FAQ</a></li>
+                </ul>
+            </nav>
+            <nav class="footer__socials socials">
+                <a href=""><img src="./img/icons/facebook.svg" /></a>
+                <a href=""><img src="./img/icons/faceit.svg" /></a>
+                <a href=""><img src="./img/icons/github.svg" /></a>
+                <a href=""><img src="./img/icons/telegram.svg" /></a>
+                <a href=""><img src="./img/icons/instagram.svg" /></a>
+            </nav>
+            <div class="footer__rights">Copyright© Arifur Rahman Tushar 2019. All rights reserved</div>
+        </footer>
+    </div>
+    <script defer src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+    <!--  smoothscroll for IOS devices and Safari -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
