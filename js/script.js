@@ -1,127 +1,157 @@
 'use strict'
 
-const objNodes = {
+// Objective approach. All linked elements are placen into relatevely names objects;
+
+const objScrollingBanner = {
+    //Initial banner element (sometime calls carousel)
+    movingBanner: document.querySelector('.banner'),
+
+    // Width of content inside banner
+    totalInnerWidth: 0,
+
+    // Coord to move in the banner
+    translateXCoord: 0,
+    increment: 270,
+
+    getTotalInnerWidth() {
+        this.innerContainer = this.movingBanner.querySelector('.banner__inner-container');
+        this.innerElements = this.innerContainer.querySelectorAll('li');
+
+        this.innerElements.forEach(value => {
+            this.totalInnerWidth += value.offsetWidth;
+        })
+    },
+
+    // must be called after method getTotalInnerWidth() (cuz getTotalInnerWidth assigns new properties for this object)
+    bannerScrollLeft() {
+        this.translateXCoord += this.increment;
+        if (this.translateXCoord > 0) this.translateXCoord = 0;
+
+        this.innerContainer.style.transform = `translateX(${this.translateXCoord}px)`;
+    },
+    bannerScrollRight() {
+        this.translateXCoord += - this.increment;
+        if (this.translateXCoord < -this.totalInnerWidth + this.innerElements[0].offsetWidth) {
+            this.translateXCoord = -this.totalInnerWidth + this.innerElements[0].offsetWidth;
+        }
+
+        this.innerContainer.style.transform = `translateX(${this.translateXCoord}px)`;
+    },
+
+    activate() {
+        // buttons
+        this.buttonScrollLeft = this.movingBanner.querySelector('.banner-scrolling-buttons__left');
+        this.buttonScrollRight = this.movingBanner.querySelector('.banner-scrolling-buttons__right');
+
+        //initialize calculation and assignment axtra properties to this obj
+        this.getTotalInnerWidth()
+
+        this.buttonScrollLeft.addEventListener('click', () => {
+            this.bannerScrollLeft();
+        });
+        this.buttonScrollRight.addEventListener('click', () => {
+            this.bannerScrollRight();
+        });
+    }
+}
+
+const objAnimatedTarif = {
+    toggleButton: document.querySelector('.toggle-button'),
+    monthPlan: document.querySelector('div.price-list.month'),
+    yearPlan: document.querySelector('.price-list.year'),
+
+    // Method to switch CSS classes with toggle
+    switchClassinToggle() {
+        const toggleLighter = this.toggleButton.querySelector('.toggle-button__lighter')
+        const toggleButtonSpans = this.toggleButton.querySelectorAll('span');
+
+        toggleLighter.classList.toggle('moved');
+        toggleButtonSpans[0].classList.toggle('selected');
+        toggleButtonSpans[1].classList.toggle('selected');
+        this.monthPlan.classList.toggle('active');
+        this.yearPlan.classList.toggle('active');
+    },
+
+    // Activate eventlistener with function SwitchClassinToggle on click
+    activate() {
+        this.toggleButton.addEventListener('click', () => {
+            this.switchClassinToggle();
+        })
+    }
+}
+
+const objMenuBurger = {
     burgerButton: document.querySelector('.burger-button'),
     burgerMenu: document.querySelector('.header__navbar'),
 
-    headerButtons: document.body.querySelectorAll('a[data-goto]'),
+    showBurgerMenu() {
+        this.burgerButton.classList.toggle('active');
+        this.burgerMenu.classList.toggle('active');
+        document.body.classList.toggle('active');
+    },
 
+    activate() {
+        this.burgerButton.addEventListener('click', () => {
+            this.showBurgerMenu();
+        })
+    }
+
+}
+
+const objHeaderLinks = {
+    headerLinks: document.body.querySelectorAll('a[data-goto]'), // collection of header links with prop [data-goto];
+
+    makeHeaderButtonsScrollable: function () {
+        for (let aButton of this.headerLinks) {
+
+            aButton.addEventListener('click', () => {
+                let currClassName = aButton.dataset.goto; // pull out property dataset → goto from html
+                const currScrollToDiv = document.body.querySelector('.' + currClassName);
+                let currYCord = currScrollToDiv.offsetTop;
+
+                scrollTo({
+                    left: 0,
+                    top: (currYCord - document.querySelector('header').offsetHeight),
+                    behavior: "smooth",
+                })
+
+                // to close burger menu if clicked
+                objMenuBurger.burgerButton.classList.remove('active');
+                objMenuBurger.burgerMenu.classList.remove('active');
+                document.body.classList.remove('active');
+            })
+        }
+    },
+
+    activate() {
+        this.makeHeaderButtonsScrollable();
+    },
+}
+
+const objFaqAccordeon = {
     answersList: document.querySelectorAll('.asked-questions__answer'),
     questionList: document.querySelectorAll('.asked-questions__question'),
     answerButton: document.querySelectorAll('.asked-questions__button'),
 
-}
+    accordeon() {
+        for (let i = 0; i < this.answerButton.length; i++) {
 
-
-
-// -------- START code to make interactive banner --------
-
-// Banner nodeElements to work with
-const movingBanner = document.querySelector('.banner');
-const innerContainer = movingBanner.querySelector('.banner__inner-container');
-const innerElements = innerContainer.querySelectorAll('li');
-
-// buttons
-const buttonScrollLeft = movingBanner.querySelector('.banner-scrolling-buttons__left');
-const buttonScrollRight = movingBanner.querySelector('.banner-scrolling-buttons__right');
-
-// Width of content inside banner
-let totalInnerWidth = 0;
-
-innerElements.forEach(value => {
-    totalInnerWidth += value.offsetWidth;
-})
-
-// Coord to move in the banner
-let translateXCoord = 0;
-let increment = 270;
-
-function bannerScrollRight() {
-    translateXCoord += - increment;
-    if (translateXCoord < -totalInnerWidth + innerElements[0].offsetWidth) translateXCoord = -totalInnerWidth + innerElements[0].offsetWidth;
-
-    innerContainer.style.transform = `translateX(${translateXCoord}px)`;
-}
-
-function bannerScrollLeft() {
-    translateXCoord += increment;
-    if (translateXCoord > 0) translateXCoord = 0;
-
-    innerContainer.style.transform = `translateX(${translateXCoord}px)`;
-}
-
-buttonScrollLeft.addEventListener('click', bannerScrollLeft);
-buttonScrollRight.addEventListener('click', bannerScrollRight);
-
-// -------- END code to make interactive banner --------
-
-
-
-// -------- START code to animate tariff switching and button --------
-
-// Nodes кнопки
-const toggleButton = document.querySelector('.toggle-button');
-const toggleLighter = toggleButton.querySelector('.toggle-button__lighter')
-const toggleButtonSpans = toggleButton.querySelectorAll('span');
-
-// Nodes тарифов
-const monthPlane = document.querySelector('div.price-list.month');
-const yearPlane = document.querySelector('.price-list.year');
-
-// Смена css классов по toggle
-function switchClassinToggle() {
-    toggleLighter.classList.toggle('moved');
-    toggleButtonSpans[0].classList.toggle('selected');
-    toggleButtonSpans[1].classList.toggle('selected');
-    monthPlane.classList.toggle('active');
-    yearPlane.classList.toggle('active');
-}
-
-// -------- END code to animate tariff switching and button --------
-
-function showBurgerMenu() {
-    objNodes.burgerButton.classList.toggle('active');
-    objNodes.burgerMenu.classList.toggle('active');
-    document.body.classList.toggle('active');
-}
-
-function makeHeaderButtonsScrollable() {
-    for (let aButton of objNodes.headerButtons) {
-
-        aButton.addEventListener('click', function () {
-            let currClassName = aButton.dataset.goto;
-            const currScrollToDiv = document.body.querySelector('.' + currClassName);
-            let currYCord = currScrollToDiv.offsetTop;
-            scrollTo({
-                left: 0,
-                top: (currYCord - document.querySelector('header').offsetHeight),
-                behavior: "smooth",
+            this.questionList[i].addEventListener('click', () => {
+                this.answersList[i].classList.toggle('_active');
+                this.answerButton[i].classList.toggle('_active');
             })
+        }
+    },
 
-            // to close burger menu if clicked
-            objNodes.burgerButton.classList.remove('active');
-            objNodes.burgerMenu.classList.remove('active');
-            document.body.classList.remove('active');
-        })
-    }
-}
-
-function accordeon() {
-    for (let i = 0; i < objNodes.answerButton.length; i++) {
-
-        objNodes.questionList[i].addEventListener('click', function () {
-            objNodes.answersList[i].classList.toggle('_active');
-            objNodes.answerButton[i].classList.toggle('_active');
-        })
-    }
-}
+    activate() {
+        this.accordeon();
+    },
+};
 
 
-// Scripts to run to activate
-
-objNodes.burgerButton.addEventListener('click', showBurgerMenu) // burger button on slick start
-toggleButton.addEventListener('click', switchClassinToggle)
-
-makeHeaderButtonsScrollable() // start script of scrolaable buttons
-accordeon() // start accordeon for faq questions
-
+// methods to run to activate dynamic
+objScrollingBanner.activate();
+objAnimatedTarif.activate();
+objMenuBurger.activate();
+objHeaderLinks.activate();
+objFaqAccordeon.activate();
