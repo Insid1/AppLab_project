@@ -194,7 +194,6 @@ class Accordeon {
 objScrollingBanner.activate();
 objAnimatedTarif.activate();
 objMenuBurger.activate();
-// objHeaderLinks.activate();
 
 const faqAccordeon = new Accordeon(document.querySelectorAll('.asked-questions__answer'), document.querySelectorAll('.asked-questions__question'), document.querySelectorAll('.asked-questions__button'));
 faqAccordeon.activate();
