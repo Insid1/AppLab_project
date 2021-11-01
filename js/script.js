@@ -98,60 +98,106 @@ const objMenuBurger = {
 
 }
 
-const objHeaderLinks = {
-    headerLinks: document.body.querySelectorAll('a[data-goto]'), // collection of header links with prop [data-goto];
+class ScrollableLinks {
 
-    makeHeaderButtonsScrollable: function () {
-        for (let aButton of this.headerLinks) {
+    constructor(links) {
+        this.links = links; // collection of links with prop like [data-goto];
+    }
 
-            aButton.addEventListener('click', () => {
-                let currClassName = aButton.dataset.goto; // pull out property dataset → goto from html
-                const currScrollToDiv = document.body.querySelector('.' + currClassName);
-                let currYCord = currScrollToDiv.offsetTop;
+    makeHeaderButtonsScrollable() {
+    for (let aButton of this.links) {
 
-                scrollTo({
-                    left: 0,
-                    top: (currYCord - document.querySelector('header').offsetHeight),
-                    behavior: "smooth",
-                })
+        aButton.addEventListener('click', () => {
+            let currClassName = aButton.dataset.goto; // pull out property dataset → [goto] from html
+            const currScrollToDiv = document.body.querySelector('.' + currClassName);
+            let currYCord = currScrollToDiv.offsetTop;
 
-                // to close burger menu if clicked
-                objMenuBurger.burgerButton.classList.remove('active');
-                objMenuBurger.burgerMenu.classList.remove('active');
-                document.body.classList.remove('active');
+            scrollTo({
+                left: 0,
+                top: (currYCord - document.querySelector('header').offsetHeight),
+                behavior: "smooth",
             })
-        }
-    },
 
-    activate() {
-        this.makeHeaderButtonsScrollable();
-    },
+            // to close burger menu if clicked
+            objMenuBurger.burgerButton.classList.remove('active');
+            objMenuBurger.burgerMenu.classList.remove('active');
+            document.body.classList.remove('active');
+        })
+    }
 }
 
-const objFaqAccordeon = {
-    answersList: document.querySelectorAll('.asked-questions__answer'),
-    questionList: document.querySelectorAll('.asked-questions__question'),
-    answerButton: document.querySelectorAll('.asked-questions__button'),
+activate() {
+    this.makeHeaderButtonsScrollable();
+}
+};
 
-    accordeon() {
-        for (let i = 0; i < this.answerButton.length; i++) {
+// const objHeaderLinks = {
+//     headerLinks: document.body.querySelectorAll('a[data-goto]'), // collection of header links with prop like [data-goto];
+
+//     makeHeaderButtonsScrollable: function () {
+//         for (let aButton of this.headerLinks) {
+
+//             aButton.addEventListener('click', () => {
+//                 let currClassName = aButton.dataset.goto; // pull out property dataset → goto from html
+//                 const currScrollToDiv = document.body.querySelector('.' + currClassName);
+//                 let currYCord = currScrollToDiv.offsetTop;
+
+//                 scrollTo({
+//                     left: 0,
+//                     top: (currYCord - document.querySelector('header').offsetHeight),
+//                     behavior: "smooth",
+//                 })
+
+//                 // to close burger menu if clicked
+//                 objMenuBurger.burgerButton.classList.remove('active');
+//                 objMenuBurger.burgerMenu.classList.remove('active');
+//                 document.body.classList.remove('active');
+//             })
+//         }
+//     },
+
+//     activate() {
+//         this.makeHeaderButtonsScrollable();
+//     },
+// }
+
+/**
+ * Class accordeon takes 3 arguments when innitialized by construction method.
+ * 1st - collection(list of nodes) of answers for questions
+ * 2nd - collection(list of nodes) of questions
+ * 3rd - button to close or open accordeon
+ */
+class Accordeon {
+    constructor(answersList, questionList, closeButton) {
+        this.answersList = answersList;
+        this.questionList = questionList;
+        this.closeButton = closeButton;
+    }
+
+    applayForAll() {
+        for (let i = 0; i < this.closeButton.length; i++) {
 
             this.questionList[i].addEventListener('click', () => {
                 this.answersList[i].classList.toggle('_active');
-                this.answerButton[i].classList.toggle('_active');
+                this.closeButton[i].classList.toggle('_active');
             })
         }
-    },
+    }
 
     activate() {
-        this.accordeon();
-    },
-};
+        this.applayForAll();
+    }
+}
 
 
 // methods to run to activate dynamic
 objScrollingBanner.activate();
 objAnimatedTarif.activate();
 objMenuBurger.activate();
-objHeaderLinks.activate();
-objFaqAccordeon.activate();
+// objHeaderLinks.activate();
+
+const faqAccordeon = new Accordeon(document.querySelectorAll('.asked-questions__answer'), document.querySelectorAll('.asked-questions__question'), document.querySelectorAll('.asked-questions__button'));
+faqAccordeon.activate();
+
+const headerLinksScrollable = new ScrollableLinks(document.body.querySelectorAll('a[data-goto]'));
+headerLinksScrollable.activate();
